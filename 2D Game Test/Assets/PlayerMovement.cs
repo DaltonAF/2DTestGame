@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
 
     public float zombieSpeed = 7f;
 
+    public Font font;
+    
 
     void Start(){
 
@@ -40,9 +42,21 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump")){
             jump = true;
-        }
-       
+        } 
     }
+
+    void OnGUI(){
+
+        GUIStyle myStyle = new GUIStyle();
+
+        Font myFont = (Font)Resources.Load("Fonts/VideoGameFont", typeof(Font));
+        myStyle.font = myFont;
+
+
+        myStyle.fontSize = 50;
+        GUI.contentColor = Color.red;
+        GUI.Label(new Rect(80,455,100,20), "Health: " + GameManager.gameManager._playerHealth.Health.ToString(), myStyle);
+}
 
     void FixedUpdate(){
 
