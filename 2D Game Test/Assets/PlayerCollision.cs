@@ -17,6 +17,8 @@ public class PlayerCollision : MonoBehaviour{
         if(col.collider.name == "orange_Donut(Clone)"){
             PlayerHeal(10);
             Destroy(col.gameObject);
+            Debug.Log(GameManager.gameManager._playerHealth.Health);
+            spawnOrangeDonut();
         }
     }
 
@@ -27,6 +29,21 @@ public class PlayerCollision : MonoBehaviour{
 
     private void PlayerHeal(int healing){
         GameManager.gameManager._playerHealth.HealUnit(healing);
+    }
+
+    private void spawnOrangeDonut(){
+
+        bool orangeSpawned = false;
+        while (!orangeSpawned){
+            Vector3 orangePosition = new Vector3(Random.Range(-9f, 9f), -1.5f, 0f);
+            if((orangePosition - transform.position).magnitude < 8){
+                continue;
+            }
+            else{
+                Instantiate(orange_Donut, orangePosition, Quaternion.identity);
+                orangeSpawned = true;
+            }
+        }
     }
 }
 
