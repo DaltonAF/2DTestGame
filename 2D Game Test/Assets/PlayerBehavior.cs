@@ -33,4 +33,9 @@ public class PlayerBehavior : MonoBehaviour
 
         GameManager.gameManager._playerHealth.HealUnit(healing);
     }
+
+    private void EnemyTakeDamage(int damage){
+
+        GameManager.gameManager._enemyHealth.DamageUnit(damage);
+    }
 }

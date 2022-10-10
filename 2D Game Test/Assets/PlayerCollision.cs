@@ -4,6 +4,8 @@ public class PlayerCollision : MonoBehaviour{
  
     public PlayerMovement movement;
 
+    public GameObject Zombie;
+
     public GameObject orange_Donut;
     
     private Rigidbody2D rb;
@@ -15,15 +17,22 @@ public class PlayerCollision : MonoBehaviour{
     private void OnCollisionEnter2D (Collision2D col)
     {
         if(col.collider.name == "Zombie(Clone)"){
-            PlayerTakeDamage(20);
-            Debug.Log(GameManager.gameManager._playerHealth.Health);
-            
+            if(transform.position.y > -0.5){
+                EnemyTakeDamage(20);
+                if(GameManager.gameManager._enemyHealth.Health <= 0){
+                    Destroy(col.gameObject);
+                    SpawnZombie();
+                }
+            }
+
+            else{
+                PlayerTakeDamage(20);
+            }
         }
 
         if(col.collider.name == "orange_Donut(Clone)"){
             PlayerHeal(10);
             Destroy(col.gameObject);
-            Debug.Log(GameManager.gameManager._playerHealth.Health);
             spawnOrangeDonut();
         }
     }
@@ -37,6 +46,11 @@ public class PlayerCollision : MonoBehaviour{
         GameManager.gameManager._playerHealth.HealUnit(healing);
     }
 
+    private void EnemyTakeDamage(int damage){
+
+        GameManager.gameManager._enemyHealth.DamageUnit(damage);
+    }
+
     private void spawnOrangeDonut(){
 
         bool orangeSpawned = false;
@@ -48,6 +62,21 @@ public class PlayerCollision : MonoBehaviour{
             else{
                 Instantiate(orange_Donut, orangePosition, Quaternion.identity);
                 orangeSpawned = true;
+            }
+        }
+    }
+    
+    private void SpawnZombie(){
+
+        bool zombieSpawned = false;
+        while (!zombieSpawned){
+            Vector3 zombiePosition = new Vector3(Random.Range(-12f, 12f), 0f, 0f);
+            if ((zombiePosition - transform.position).magnitude < 12){
+                continue;
+            }
+            else{
+                Instantiate(Zombie, zombiePosition, Quaternion.identity);
+                zombieSpawned = true;
             }
         }
     }

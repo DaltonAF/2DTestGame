@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager gameManager { get; private set; }
 
     public UnitHealth _playerHealth = new UnitHealth(100, 100);
-    public UnitHealth _zombieHealth = new UnitHealth(20, 20);
+    public UnitHealth _enemyHealth = new UnitHealth(20, 20);
 
     void Awake(){
         
