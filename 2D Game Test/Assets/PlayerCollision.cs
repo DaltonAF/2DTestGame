@@ -6,7 +6,13 @@ public class PlayerCollision : MonoBehaviour{
 
     public GameObject orange_Donut;
     
-    void OnCollisionEnter2D (Collision2D col)
+    private Rigidbody2D rb;
+
+    void Start(){
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnCollisionEnter2D (Collision2D col)
     {
         if(col.collider.name == "Zombie(Clone)"){
             PlayerTakeDamage(20);
@@ -35,7 +41,7 @@ public class PlayerCollision : MonoBehaviour{
 
         bool orangeSpawned = false;
         while (!orangeSpawned){
-            Vector3 orangePosition = new Vector3(Random.Range(-9f, 9f), -1.5f, 0f);
+            Vector3 orangePosition = new Vector3(Random.Range(-9f, 9f), Random.Range(0f, 2f), 0f);
             if((orangePosition - transform.position).magnitude < 8){
                 continue;
             }
