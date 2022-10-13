@@ -287,6 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 0}
+  Zombie: {fileID: 0}
   orange_Donut: {fileID: 1074572643}
 --- !u!1 &519420028
 GameObject:
@@ -694,6 +695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 916716155}
+  Zombie: {fileID: 365727127}
   orange_Donut: {fileID: 1074572643}
 --- !u!114 &916716154
 MonoBehaviour:
@@ -719,6 +721,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a87e50e65d74f54aa4225f82340ad9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerControl:
+    m_Name: Player Control
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: af302ab6-d3cf-416c-a3fb-21a6924fd44f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: WASD
+      m_Id: b1552d80-73b9-4560-b1c2-01e70df730ad
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Player Control
+      m_Flags: 4
+    - m_Name: up
+      m_Id: 71c5ffe1-93bf-4592-bb6a-620ac0c34531
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Player Control
+      m_Flags: 8
+    - m_Name: down
+      m_Id: b21c3442-35a3-4c11-95a5-9cdf4f6ca051
+      m_Path: 
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Player Control
+      m_Flags: 8
+    - m_Name: left
+      m_Id: 0a43cfa1-c516-49fe-9218-ed1a8dd15c83
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Player Control
+      m_Flags: 8
+    - m_Name: right
+      m_Id: c44007a6-3f42-49fe-b287-f838fb9cdf31
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Player Control
+      m_Flags: 8
+    m_Flags: 0
   Zombie: {fileID: 365727127}
   orange_Donut: {fileID: 1074572643}
   controller: {fileID: 916716158}

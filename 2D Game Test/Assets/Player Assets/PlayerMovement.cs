@@ -1,9 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public InputAction PlayerControl;
+
+    private void OnEnable()
+    {
+        PlayerControl.Enable();
+    }
+
+    private void OnDisable()
+    {
+        PlayerControl.Disable();
+    }
 
     public GameObject Zombie;
 
